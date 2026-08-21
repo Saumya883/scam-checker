@@ -31,14 +31,16 @@ function BrowseReports() {
       <h2>Reported Scams</h2>
       {reports.length === 0 && <p>No reports yet.</p>}
       {reports.map((report) => (
-        <div key={report.id} style={{ border: '1px solid #ccc', padding: '1rem', marginBottom: '1rem' }}>
-          <p><strong>Company:</strong> {report.reported_company_name}</p>
-          <p><strong>Domain:</strong> {report.claimed_domain}</p>
-          <p><strong>Contact:</strong> {report.contact_email} {report.contact_phone}</p>
-          <p><strong>Details:</strong> {report.offer_details}</p>
-          <p><strong>Status:</strong> {report.status}</p>
-        </div>
-      ))}
+  <div key={report.id} className={`report-card ${report.status === 'verified_scam' ? 'confirmed' : ''}`}>
+    <p><strong>Company:</strong> {report.reported_company_name}</p>
+    <p className="mono"><strong>Domain:</strong> {report.claimed_domain}</p>
+    <p><strong>Contact:</strong> {report.contact_email} {report.contact_phone}</p>
+    <p><strong>Details:</strong> {report.offer_details}</p>
+    <span className={`status-badge ${report.status === 'verified_scam' ? 'confirmed' : 'pending'}`}>
+      {report.status === 'verified_scam' ? 'Confirmed scam' : 'Pending review'}
+    </span>
+  </div>
+))}
     </div>
   )
 }

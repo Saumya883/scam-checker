@@ -2,17 +2,25 @@ import VerifyOffer from './VerifyOffer'
 import Login from './Login'
 import ReportScam from './ReportScam'
 import BrowseReports from './BrowseReports'
+import ThemeToggle from './ThemeToggle'
 import './App.css'
 
 function App() {
   return (
-    <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>Job Offer Scam Checker</h1>
+    <main>
+      <div className="site-header">
+        <div>
+          <h1>Scam Shield</h1>
+          <p className="tagline">Verify job offers. Report fraud. Protect your batch.</p>
+        </div>
+        <ThemeToggle />
+      </div>
+
       <VerifyOffer />
-      <hr style={{ margin: '2rem 0' }} />
+      <hr />
       <Login />
       <ReportScam />
-      <hr style={{ margin: '2rem 0' }} />
+      <hr />
       <BrowseReports />
     </main>
   )
